@@ -1,1 +1,32 @@
+using System;
 
+namespace Laba
+{
+    class Program
+    {
+        static void Main() 
+        {
+
+            ElectronicDocument File = new ElectronicDocument();
+            File.NameFile = "Лабораторная работа";
+            File.Author = "Семен Гращенко";
+            File.Keywords = "C#";
+            File.Themes = "ООП на C#";
+
+            Console.WriteLine(File.Author);
+            Console.WriteLine(File.NameFile);
+
+        }
+    }
+
+
+
+    class ElectronicDocument
+    {
+        public string NameFile, Author, Keywords, Themes;
+
+
+        
+    }
+
+}
