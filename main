@@ -1,47 +1,121 @@
 using System;
-
-namespace Laba
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace LABA2
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Console.WriteLine("Выберите файл, 1-MsWord, 2-Excel");
-            int i;
-            i = Convert.ToInt32(Console.ReadLine());
-            ElectronicDocument File = new ElectronicDocument();
-            File.NameFile = "Лабораторная работа";
-            File.Author = "Семен Гращенко";
-            Console.WriteLine(File.Author);
-            Console.WriteLine(File.NameFile);
-            if (i == 1)
-            {
-                MsWord Word = new MsWord();
-                Word.Numberofwords = 100;
-                Console.WriteLine(Word.Numberofwords);
-            }
-            if (i == 2)
-            {
-                Excel Table = new Excel();
-                Table.Cells = 23000;
-                Console.WriteLine(Table.Cells);
-            }
-
+            Menu.Instance.Start();
         }
     }
-
-    class ElectronicDocument
+}
+public class Menu
+{
+    public void Start()
     {
-        public string NameFile, Author;
-
+        Console.WriteLine
+            (
+            "Выберите документ:" +
+            "1-Excel" +
+            "2-Word" +
+            "3-PDF" +
+            "4-Txt" +
+            "5-Html"
+            );
+        int Number = Convert.ToInt32(Console.ReadLine());
+        switch (Number)
+        {
+            case 1:
+                Menu.Instance.Excel();
+                break;
+            case 2:
+                Menu.Instance.MsWord();
+                break;
+            case 3:
+                Menu.Instance.PDF();
+                break;
+            case 4:
+                Menu.Instance.Txt();
+                break;
+            case 5:
+                Menu.Instance.Html();
+                break;
+        }
+    }
+    public static Menu Instance
+    {
+        get
+        {
+            if (instance == null) 
+                instance = new Menu();
+            return instance;
+        }
+    }
+    private Menu() { }
+    private static Menu instance;
+    public void Excel() 
+    {
+        var Excel = new
+        {
+            Name = "Лабораторная работа",
+            Author = "Семен Гращенко",
+            Keywords = "excel",
+            Subject = "information",
+            PathFile = "c:\\"
+        };
+        Console.WriteLine(Excel);
+    }
+    public void MsWord()
+    {
+        var Word = new
+        {
+            Name = "Лабораторная работа",
+            Author = "Семен Гращенко",
+            Keywords = "Word",
+            Subject = "informa",
+            PathFile = "c:\\"
+        };
+        Console.WriteLine(Word);
+    }
+    public void PDF()
+    {
+        var Pdf = new
+        {
+            Name = "Лабораторная работа",
+            Author = "Семен Гращенко",
+            Keywords = "pdf",
+            Subject = "Filos",
+            PathFile = "c:\\"
+        };
+        Console.WriteLine(Pdf);
+    }
+    public void Txt()
+    {
+        var txt = new
+        {
+            Name = "Лабораторная работа",
+            Author = "Семен Гращенко",
+            Keywords = "text",
+            Subject = "inf",
+            PathFile = "c:\\"
+        };
+        Console.WriteLine(txt);
+    }
+    public void Html()
+    {
+        var html = new
+        {
+            Name = "Лабораторная работа",
+            Author = "Семен Гращенко",
+            Keywords = "html",
+            Subject = "Low",
+            PathFile = "c:\\"
+        };
+        Console.WriteLine(html);
     }
 
-    class MsWord:ElectronicDocument
-    {
-        public int Numberofwords;
-    }
-    class Excel : ElectronicDocument
-    {
-        public int Cells;
-    }
 }
